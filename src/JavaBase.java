@@ -2,13 +2,14 @@ import java.util.Arrays;
 
 public class JavaBase {
     public static void main(String[] args) {
-        //Database test = new Database("test.csv");
-        
-        String[] testFields = {"hi", "foo", "bar"};
-        String[] testRow = {"foo", "bob", "like"};
+        Database testData = new Database(null);
+        String[] fields = {"hi", "foo", "bar"};
+        Table testTable = new Table(fields, "test");
 
-        Table test = new Table(testFields);
-        test.addRow(testRow);
-        System.err.println(Arrays.deepToString(test.getTable()));
+        testData.newTable(testTable);
+
+        testTable = testData.getTables()[0];
+        System.err.println(testTable.getTitle());
+        
     }
 }

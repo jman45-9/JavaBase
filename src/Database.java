@@ -1,18 +1,30 @@
-import java.io.File;
-
 public class Database {
+    private Table[] tables;
 
-    public Database(String csvPath) {
-        File csv = new File(csvPath);
-        if (!csv.exists()) {
-            System.out.println("CSV file does not exist. FATAL_ERROR EXITING.");
-            System.exit(1);
-        }
+    public Table[] getTables() {
+        return tables;
+    }
+
+    public Database(Table[] tables) {
+        this.tables = tables;
+    }
+
+    public void newTable(String[] fields, String title) {
+        newTable(new Table(fields, title));
 
     }
 
-    private void initDatabase(File csv) {
-        
+    public void newTable(Table newTable) {
+        Table[] newTables = new Table[tables!=null ? tables.length : 1];
+        for(int iii = 0; iii < (tables!=null?tables.length:0); iii++)
+            newTables[iii] = tables[iii];
+        tables = newTables;
+        tables[tables.length-1] = newTable;
     }
-    
+
+    public String[] query(String queryString) {
+        String[] queryArray = queryString.split("[\s\\n\\t]");
+
+        return queryArray;
+    }
 }

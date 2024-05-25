@@ -1,9 +1,14 @@
 public class Table {
     private String[][] table;
+    private String title;
 
     public String[][] getTable() {
         return table;
 
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String[] getFields() {
@@ -22,16 +27,16 @@ public class Table {
         return column;
     }
 
-    public Table(String[][] table) {
+    public Table(String[][] table, String title) {
         this.table = table;
+        this.title = title;
     }
 
-    public Table(String[] fields) {
+    public Table(String[] fields, String title) {
         table = new String[1][fields.length];
         table[0] = fields;
+        this.title = title;
     }
-
-
 
     public void addRow(String[] newRow) {
         String[][] newTable = new String[this.table.length+1][this.table[0].length];
