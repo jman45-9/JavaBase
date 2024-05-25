@@ -24,7 +24,33 @@ public class Database {
 
     public String[] query(String queryString) {
         String[] queryArray = queryString.split("[\s\\n\\t]");
-
+        for(int iii = 0; iii < queryArray.length; iii++)
+            queryArray[iii] = (queryArray[iii].trim()).toUpperCase();
+        queryArray = removeBlanks(queryArray);
         return queryArray;
+    }
+
+    private String[] removeBlanks(String[] input) {
+        String[] preOutput = new String[input.length];
+        int jjj = 0;
+        for(int iii = 0; iii < input.length; iii++) {
+            if (input[iii].length() != 0) {
+                preOutput[jjj] = input[iii];
+                jjj++;
+            }
+        }
+
+        int counter = 0;
+        while (counter < preOutput.length) {
+            if (preOutput[counter] == null) 
+                break;
+            counter++;
+        }
+
+        String[] output = new String[counter];
+        for (int iii = 0; iii < output.length; iii++)
+            output[iii] = preOutput[iii];
+
+        return output;
     }
 }

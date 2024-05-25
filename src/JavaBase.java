@@ -9,7 +9,7 @@ public class JavaBase {
         testData.newTable(testTable);
 
         testTable = testData.getTables()[0];
-        System.err.println(testTable.getTitle());
+        System.err.println(Arrays.toString(testData.query("SELECT *    from Test")));
         
     }
 }
